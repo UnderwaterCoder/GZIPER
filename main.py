@@ -1,6 +1,7 @@
 import gzip
 import os
 import shutil
+import sys
 
 def select_files(files,folders,DATAINPUT_FOLDER_PATH,OUTPUT_FOLDER):
     print("[INFO]: SELECT ALL FILES")
@@ -33,7 +34,7 @@ def create_folders(folders):
     if folder_created:
         print("[INFO]: ALL FOLDERS ARE CREATED")
     else:
-        print("[WARN]: >!< NO FOLDER ARE CREATED >!<")
+        print("[WARN]: NO FOLDER ARE CREATED")
 
 def gzip_process(files,OUTPUT_FOLDER):
     print("[INFO]: COMPRESSING HAS BEN STARTED")
@@ -45,10 +46,10 @@ def gzip_process(files,OUTPUT_FOLDER):
     print("[INFO]: ALL FILES ARE COMPRESSED")
 
 if __name__ == '__main__':
-    ###########################
-    INPUT_FOLDER = "web"
-    OUTPUT_FOLDER = "gziped_web"+"/"
-    ###########################
+    if len(sys.argv) == 3:
+        print("[ERROR]: I NEED A INPUT AND A OUTPUT!")
+    INPUT_FOLDER = sys.argv[1]
+    OUTPUT_FOLDER = sys.argv[2]+"/"
     files = []
     folders = [(OUTPUT_FOLDER[:-1],OUTPUT_FOLDER[:-1]),(OUTPUT_FOLDER+INPUT_FOLDER,INPUT_FOLDER)]
     select_files(files,folders,INPUT_FOLDER,OUTPUT_FOLDER)
