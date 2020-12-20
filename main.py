@@ -31,6 +31,7 @@ def create_folders(folders):
             folder_created = True
         except FileExistsError:
             pass
+    
     if folder_created:
         print("[INFO]: ALL FOLDERS ARE CREATED")
     else:
